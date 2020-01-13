@@ -11,22 +11,18 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签 - 拥抱阳光的森林</title>
+<title>标签: Java - 拥抱阳光的森林</title>
 
 
     <meta name="description" content="my blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="拥抱阳光的森林">
-<meta property="og:url" content="https://yesmylove.github.io/tags/index.html">
+<meta property="og:url" content="https://yesmylove.github.io/tags/Java/index.html">
 <meta property="og:site_name" content="拥抱阳光的森林">
 <meta property="og:description" content="my blog">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yesmylove.github.io/images/og_image.png">
 <meta property="article:author" content="拥抱阳光的森林">
-<meta property="article:tag" content="lhy">
-<meta property="article:tag" content="Java">
-<meta property="article:tag" content="MQ">
-<meta property="article:tag" content="RabbitMQ">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://yesmylove.github.io/images/og_image.png">
 
@@ -103,7 +99,7 @@
                 <a class="navbar-item"
                 href="/categories">分类</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/tags">标签</a>
                 
                 <a class="navbar-item"
@@ -135,46 +131,113 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Java</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-13T00:57:39.000Z">2020-01-13</time>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Java/">
-                        <span class="tag">Java</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Java%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">Java技术分享</a>
                 </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/MQ/">
-                        <span class="tag">MQ</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/RabbitMQ/">
-                        <span class="tag">RabbitMQ</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 625 个字)
+                </span>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/lhy/">
-                        <span class="tag">lhy</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
             </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/13/SpringBoot-RabbitMQ%E7%A4%BA%E4%BE%8B%E6%95%B4%E5%90%88/">SpringBoot+RabbitMQ示例整合</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="简介-RabbitMQ"><a href="#简介-RabbitMQ" class="headerlink" title="简介 RabbitMQ"></a>简介 RabbitMQ</h2><p>   RabbitMQ是实现AMQP(高级消息队列协议)的消息中间件的一种，用于分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。</p>
+<p> 一些主要概念：</p>
+<ul>
+<li>生产者 消息额生产方，负责将消息推送到消息队列</li>
+<li>消费者 消息的最终接收方，负责监听队列中的对相应消息，消费信息</li>
+<li>队列 消息的寄存器，负责存放生产者产生的信息</li>
+</ul>
+<p>模式：</p>
+<ul>
+<li>direct 直连模式，用于实例间的任务分发</li>
+<li>topic 话题模式，通过可配置的规则分发给绑定的exchange上的队列</li>
+<li>headers 适用于规则复杂的分发，用于headers里面的参数表达规则</li>
+<li>fanout 分发给所以的绑定到该exchange上的队列，忽略routing key</li>
+</ul>
+<h2 id="1-创建SpringBoot项目，引入RabbitMQ依赖"><a href="#1-创建SpringBoot项目，引入RabbitMQ依赖" class="headerlink" title="1  创建SpringBoot项目，引入RabbitMQ依赖"></a>1  创建SpringBoot项目，引入RabbitMQ依赖</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--RabbitMQ 依赖 --&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-配置application-properties文件"><a href="#2-配置application-properties文件" class="headerlink" title="2 配置application.properties文件"></a>2 配置application.properties文件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springboot-rabbitmq</span><br><span class="line">spring.rabbitmq.host=<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">spring.rabbitmq.port=<span class="number">5672</span></span><br><span class="line">spring.rabbitmq.username=guest</span><br><span class="line">spring.rabbitmq.password=guest</span><br><span class="line">spring.rabbitmq.publisher-confirms=<span class="literal">true</span></span><br><span class="line">spring.rabbitmq.virtual-host=<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-RabbitMQ的五种模式"><a href="#3-RabbitMQ的五种模式" class="headerlink" title="3 RabbitMQ的五种模式"></a>3 RabbitMQ的五种模式</h2><h3 id="1-简单队列（模式）"><a href="#1-简单队列（模式）" class="headerlink" title="1) 简单队列（模式）"></a>1) 简单队列（模式）</h3><p>一个生产者对应一个消费者</p>
+<ul>
+<li>生产者</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Service</span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">HelloProducer1</span> </span>&#123;</span><br><span class="line">    @Resource</span><br><span class="line">    private AmqpTemplate rabbitTemplate;</span><br><span class="line"></span><br><span class="line">    public <span class="keyword">void</span> send() &#123;</span><br><span class="line">        <span class="built_in">String</span> sendMsg = <span class="string">"hello1"</span>;</span><br><span class="line">        System.out.println(<span class="string">"Producer1 : "</span> + sendMsg);</span><br><span class="line">        <span class="keyword">this</span>.rabbitTemplate.convertAndSend(AmqpConfiguration.TEST_HELLO_SEND, sendMsg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>消费者</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@Service</span><br><span class="line">@RabbitListener(queues = AmqpConfiguration.TEST_HELLO_SEND)</span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">HelloConsumer1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    @RabbitHandler</span><br><span class="line">    public <span class="keyword">void</span> consumer(<span class="built_in">String</span> hello)&#123;</span><br><span class="line">        System.out.println(<span class="string">"Consumer:"</span> + hello);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Work-模式"><a href="#2-Work-模式" class="headerlink" title="2) Work 模式"></a>2) Work 模式</h3><p>一个生产者对应多个消费者</p>
+<ul>
+<li>生产者</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">void</span> work()&#123;</span><br><span class="line">    <span class="keyword">for</span> (int i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">String</span> msg = i + <span class="string">"-&gt; work"</span>;</span><br><span class="line">        System.out.println(<span class="string">"Producer："</span>+ msg);</span><br><span class="line">        <span class="keyword">this</span>.rabbitTemplate.convertAndSend(AmqpConfiguration.WORK_MODEL_QUEUE, msg);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>消费者</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 消费者1</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param <span class="variable">msg</span></span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   @RabbitListener(queues = AmqpConfiguration.WORK_MODEL_QUEUE)</span><br><span class="line">   public <span class="keyword">void</span> consumer1(<span class="built_in">String</span> msg)&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">       System.out.println(<span class="string">"consumer1 : "</span> + msg);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 消费者2</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param <span class="variable">msg</span></span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   @RabbitListener(queues = AmqpConfiguration.WORK_MODEL_QUEUE)</span><br><span class="line">   public <span class="keyword">void</span> consumer2(<span class="built_in">String</span> msg)&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">       System.out.println(<span class="string">"consumer2 : "</span> + msg);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-订阅模型-Fanout"><a href="#3-订阅模型-Fanout" class="headerlink" title="3) 订阅模型-Fanout"></a>3) 订阅模型-Fanout</h3><blockquote>
+<p>订阅模型-Fanout也成为广播模式，流程如下</p>
+</blockquote>
+<ol>
+<li>可以有多个消费者</li>
+<li>每个消费者有自己的队列</li>
+<li>每个队列都要绑定到Exchange（交换机）</li>
+<li>生产者发送的消息，只能发送到交换机，交换机来决定要发给哪个队列，生产者无法决定。</li>
+<li>交换机把消息发送给绑定过的所有队列</li>
+<li>队列的消费者都能拿到消息。实现一条消息被多个消费者消费</li>
+</ol>
+
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+
+
+
+</div>
                 
 
 
