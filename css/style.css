@@ -4,12 +4,17 @@
 html {
   font-size: 14px;
 }
-body,
+body {
+  font-family: "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", sans-serif;
+  cursor: url("../images/dao.png"), auto;
+}
 button,
 input,
 select,
 textarea {
   font-family: "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", sans-serif;
+  cursor: url("https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@2.1.6/images/mouse.cur"), auto;
+  background: #f5f5dc;
 }
 @media screen and (min-width: 1280px) {
   .is-1-column .container,
@@ -56,7 +61,7 @@ textarea {
   }
 }
 .tag.is-grey {
-  background: #e7e7e7;
+  background: #f7f7f8;
 }
 .card {
   border-radius: 4px;
@@ -133,7 +138,7 @@ img.thumbnail {
   }
 }
 .footer {
-  background: #fff;
+  background: #f7f7f8;
 }
 .footer .field .button {
   background: transparent;
@@ -156,7 +161,7 @@ img.thumbnail {
 .pagination .pagination-link:not(.is-current),
 .pagination .pagination-previous,
 .pagination .pagination-next {
-  background: #fff;
+  background: #f7f7f8;
   border: none;
 }
 .pagination .pagination-link,
@@ -200,7 +205,7 @@ img.thumbnail {
   top: calc(1.3rem + 9px);
   width: 9px;
   bottom: 0;
-  background: #fff;
+  background: #f7f7f8;
 }
 .timeline .media:first-child:last-child:after {
   top: calc(0.3rem + 9px);
@@ -553,4 +558,14 @@ figure.highlight .section {
   padding: 1rem 1rem;
   border-left: 3px solid #ff1700;
   background-color: #f9f9f9;
+}
+canvas {
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  z-index: -1;
 }
