@@ -33,7 +33,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.zenika.com/wp-content/uploads/2012/03/RabbitMQ.jpg">
 <meta property="article:published_time" content="2020-01-13T00:57:39.000Z">
-<meta property="article:modified_time" content="2020-01-14T07:55:50.714Z">
+<meta property="article:modified_time" content="2020-01-14T09:30:17.063Z">
 <meta property="article:author" content="拥抱阳光的森林">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="MQ">
@@ -174,7 +174,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 626 个字)
+                    5 分钟 读完 (大约 768 个字)
                 </span>
                 
                 
@@ -243,6 +243,22 @@
 <li>交换机把消息发送给绑定过的所有队列</li>
 <li>队列的消费者都能拿到消息。实现一条消息被多个消费者消费</li>
 </ol>
+<ul>
+<li><p>生产者</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * fanout-订阅模型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public <span class="keyword">void</span> fanout()&#123;</span><br><span class="line">    <span class="built_in">String</span> msg = <span class="string">"fanout-订阅模型"</span>;</span><br><span class="line">    <span class="keyword">for</span> (int i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++)&#123;</span><br><span class="line">        System.out.println(<span class="string">"fanout : "</span> + msg + i);</span><br><span class="line">        <span class="keyword">this</span>.rabbitTemplate.convertAndSend(AmqpConfiguration.FANOUT_EXCHANGE_QUEUE, <span class="string">""</span>, msg + i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<ul>
+<li>消费者</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">@Service</span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">FanoutConsumer</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 消费者1</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="variable">msg</span></span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    @RabbitListener(bindings = @QueueBinding(</span><br><span class="line">            value = @Queue(value = <span class="string">"fanout1.queue"</span>, durable = <span class="string">"true"</span>),</span><br><span class="line">            exchange = @Exchange(</span><br><span class="line">                    value = AmqpConfiguration.FANOUT_EXCHANGE_QUEUE,</span><br><span class="line">                    ignoreDeclarationExceptions = <span class="string">"true"</span>,</span><br><span class="line">                    type = ExchangeTypes.FANOUT</span><br><span class="line">            )</span><br><span class="line">    ))</span><br><span class="line">    public <span class="keyword">void</span> fanoutConsumer1(<span class="built_in">String</span> msg)&#123;</span><br><span class="line">        System.out.println(<span class="string">"fanoutConsumer1 :"</span> + msg);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 消费者2</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="variable">msg</span></span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    @RabbitListener(bindings = @QueueBinding(</span><br><span class="line">            value = @Queue(value = <span class="string">"fanout2.queue"</span>, durable = <span class="string">"true"</span>),</span><br><span class="line">            exchange = @Exchange(</span><br><span class="line">                    value = AmqpConfiguration.FANOUT_EXCHANGE_QUEUE,</span><br><span class="line">                    ignoreDeclarationExceptions = <span class="string">"true"</span>,</span><br><span class="line">                    type = ExchangeTypes.FANOUT</span><br><span class="line">            )</span><br><span class="line">    ))</span><br><span class="line">    public <span class="keyword">void</span> fanoutConsumer2(<span class="built_in">String</span> msg)&#123;</span><br><span class="line">        System.out.println(<span class="string">"fanoutConsumer2 :"</span> + msg);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p> @<a href="https://github.com/yesmylove/springboot-rabbitmq">源码地址传送门</a></p>
+</blockquote>
 
         </div>
             
@@ -334,7 +350,7 @@
                         <span>广东东莞</span>
                     </p>
                     
-                    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=90% height=50 src="//music.163.com/outchain/player?type=2&id=1377767011&auto=0&height=32"></iframe>
+                    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=99% height=52 src="//music.163.com/outchain/player?type=2&id=1377767011&auto=1&height=32"></iframe>
                 </div>
             </div>
         </nav>
