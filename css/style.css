@@ -4,9 +4,6 @@
 html {
   font-size: 14px;
 }
-body {
-  background-color: #f7f7f7;
-}
 body,
 button,
 input,
@@ -20,6 +17,10 @@ textarea {
     max-width: 960px;
     width: 960px;
   }
+  .is-3-column .container {
+    max-width: 1216px;
+    width: 1216px;
+  }
 }
 @media screen and (min-width: 1472px) {
   .is-2-column .container {
@@ -32,6 +33,10 @@ textarea {
   }
 }
 @media screen and (max-width: 768px) {
+  .is-3-column .container {
+    max-width: 1344px;
+    width: 1344px;
+  }
   .section {
     padding: 1.5rem 1rem;
   }
@@ -536,4 +541,13 @@ figure.highlight .section {
 }
 .gist .file {
   all: initial;
+}
+.post-copyright {
+  font-size: 1rem;
+  letter-spacing: 0.02rem;
+  word-break: break-all;
+  margin: 2.5rem 0 0;
+  padding: 1rem 1rem;
+  border-left: 3px solid #ff1700;
+  background-color: #f9f9f9;
 }

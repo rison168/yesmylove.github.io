@@ -14,16 +14,16 @@
 <title>SpringBoot+RabbitMQ示例整合 - 拥抱阳光的森林</title>
 
 
-    <meta name="description" content="简介 RabbitMQ   RabbitMQ是实现AMQP(高级消息队列协议)的消息中间件的一种，用于分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。  一些主要概念：  生产者 消息额生产方，负责将消息推送到消息队列 消费者 消息的最终接收方，负责监听队列中的对相应消息，消费信息 队列 消息的寄存器，负责存放生产者产生的信息  模式：  direct 直连模式，用于实例间的任">
+    <meta name="description" content="1 简介 RabbitMQ   RabbitMQ是实现AMQP(高级消息队列协议)的消息中间件的一种，用于分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。  一些主要概念：  生产者 消息额生产方，负责将消息推送到消息队列 消费者 消息的最终接收方，负责监听队列中的对相应消息，消费信息 队列 消息的寄存器，负责存放生产者产生的信息  模式：  direct 直连模式，用于实例间">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot+RabbitMQ示例整合">
 <meta property="og:url" content="https://yesmylove.github.io/2020/01/13/SpringBoot-RabbitMQ%E7%A4%BA%E4%BE%8B%E6%95%B4%E5%90%88/index.html">
 <meta property="og:site_name" content="拥抱阳光的森林">
-<meta property="og:description" content="简介 RabbitMQ   RabbitMQ是实现AMQP(高级消息队列协议)的消息中间件的一种，用于分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。  一些主要概念：  生产者 消息额生产方，负责将消息推送到消息队列 消费者 消息的最终接收方，负责监听队列中的对相应消息，消费信息 队列 消息的寄存器，负责存放生产者产生的信息  模式：  direct 直连模式，用于实例间的任">
+<meta property="og:description" content="1 简介 RabbitMQ   RabbitMQ是实现AMQP(高级消息队列协议)的消息中间件的一种，用于分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。  一些主要概念：  生产者 消息额生产方，负责将消息推送到消息队列 消费者 消息的最终接收方，负责监听队列中的对相应消息，消费信息 队列 消息的寄存器，负责存放生产者产生的信息  模式：  direct 直连模式，用于实例间">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yesmylove.github.io/images/og_image.png">
 <meta property="article:published_time" content="2020-01-13T00:57:39.000Z">
-<meta property="article:modified_time" content="2020-01-13T09:11:45.983Z">
+<meta property="article:modified_time" content="2020-01-14T01:36:05.194Z">
 <meta property="article:author" content="拥抱阳光的森林">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="MQ">
@@ -81,6 +81,7 @@
 
 <link rel="stylesheet" href="/css/style.css">
 </head>
+<!--<body class="is-2-column">-->
 <body class="is-3-column">
     <nav class="navbar navbar-main">
     <div class="container">
@@ -123,6 +124,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -136,7 +141,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-content article ">
@@ -153,7 +158,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 625 个字)
+                    4 分钟 读完 (大约 626 个字)
                 </span>
                 
                 
@@ -171,7 +176,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="简介-RabbitMQ"><a href="#简介-RabbitMQ" class="headerlink" title="简介 RabbitMQ"></a>简介 RabbitMQ</h2><p>   RabbitMQ是实现AMQP(高级消息队列协议)的消息中间件的一种，用于分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。</p>
+            <h2 id="1-简介-RabbitMQ"><a href="#1-简介-RabbitMQ" class="headerlink" title="1 简介 RabbitMQ"></a>1 简介 RabbitMQ</h2><p>   RabbitMQ是实现AMQP(高级消息队列协议)的消息中间件的一种，用于分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。</p>
 <p> 一些主要概念：</p>
 <ul>
 <li>生产者 消息额生产方，负责将消息推送到消息队列</li>
@@ -185,11 +190,12 @@
 <li>headers 适用于规则复杂的分发，用于headers里面的参数表达规则</li>
 <li>fanout 分发给所以的绑定到该exchange上的队列，忽略routing key</li>
 </ul>
-<h2 id="1-创建SpringBoot项目，引入RabbitMQ依赖"><a href="#1-创建SpringBoot项目，引入RabbitMQ依赖" class="headerlink" title="1  创建SpringBoot项目，引入RabbitMQ依赖"></a>1  创建SpringBoot项目，引入RabbitMQ依赖</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--RabbitMQ 依赖 --&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="2-创建SpringBoot项目，引入RabbitMQ依赖"><a href="#2-创建SpringBoot项目，引入RabbitMQ依赖" class="headerlink" title="2  创建SpringBoot项目，引入RabbitMQ依赖"></a>2  创建SpringBoot项目，引入RabbitMQ依赖</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--RabbitMQ 依赖 --&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="2-配置application-properties文件"><a href="#2-配置application-properties文件" class="headerlink" title="2 配置application.properties文件"></a>2 配置application.properties文件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springboot-rabbitmq</span><br><span class="line">spring.rabbitmq.host=<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">spring.rabbitmq.port=<span class="number">5672</span></span><br><span class="line">spring.rabbitmq.username=guest</span><br><span class="line">spring.rabbitmq.password=guest</span><br><span class="line">spring.rabbitmq.publisher-confirms=<span class="literal">true</span></span><br><span class="line">spring.rabbitmq.virtual-host=<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-配置application-properties文件"><a href="#3-配置application-properties文件" class="headerlink" title="3 配置application.properties文件"></a>3 配置application.properties文件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=springboot-rabbitmq</span><br><span class="line">spring.rabbitmq.host=<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">spring.rabbitmq.port=<span class="number">5672</span></span><br><span class="line">spring.rabbitmq.username=guest</span><br><span class="line">spring.rabbitmq.password=guest</span><br><span class="line">spring.rabbitmq.publisher-confirms=<span class="literal">true</span></span><br><span class="line">spring.rabbitmq.virtual-host=<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="3-RabbitMQ的五种模式"><a href="#3-RabbitMQ的五种模式" class="headerlink" title="3 RabbitMQ的五种模式"></a>3 RabbitMQ的五种模式</h2><h3 id="1-简单队列（模式）"><a href="#1-简单队列（模式）" class="headerlink" title="1) 简单队列（模式）"></a>1) 简单队列（模式）</h3><p>一个生产者对应一个消费者</p>
+<h2 id="4-RabbitMQ的五种模式"><a href="#4-RabbitMQ的五种模式" class="headerlink" title="4 RabbitMQ的五种模式"></a>4 RabbitMQ的五种模式</h2><h3 id="1-简单队列（模式）"><a href="#1-简单队列（模式）" class="headerlink" title="1) 简单队列（模式）"></a>1) 简单队列（模式）</h3><p>一个生产者对应一个消费者</p>
 <ul>
 <li>生产者</li>
 </ul>
@@ -223,6 +229,16 @@
 </ol>
 
         </div>
+            
+                            <ul class="post-copyright">
+                                <li><strong>本文标题：</strong><a href="https://yesmylove.github.io/2020/01/13/SpringBoot-RabbitMQ%E7%A4%BA%E4%BE%8B%E6%95%B4%E5%90%88/">SpringBoot+RabbitMQ示例整合</a></li>
+                                <li><strong>本文作者：</strong><a href="https://yesmylove.github.io">拥抱阳光的森林</a></li>
+                                <li><strong>本文链接：</strong><a href="https://yesmylove.github.io/2020/01/13/SpringBoot-RabbitMQ%E7%A4%BA%E4%BE%8B%E6%95%B4%E5%90%88/">https://yesmylove.github.io/2020/01/13/SpringBoot-RabbitMQ%E7%A4%BA%E4%BE%8B%E6%95%B4%E5%90%88/</a></li>
+                                <li><strong>发布时间：</strong>2020-01-13</li>
+                                <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+                                    </li>
+                                </ul>
+                        
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
@@ -408,361 +424,55 @@
 </div>
     
         
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            链接
-        </h3>
-        <ul class="menu-list">
-        
-            <li>
-                <a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">Hexo</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">hexo.io</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="https://github.com/yesmylove" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">PPOffice</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">github.com</span>
-                    </span>
-                </a>
-            </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
 
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Java%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">
-            <span class="level-start">
-                <span class="level-item">Java技术分享</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#1-简介-RabbitMQ">
+        <span class="has-mr-6">1</span>
+        <span>1 简介 RabbitMQ</span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/%E4%BA%BA%E7%89%A9/">
-            <span class="level-start">
-                <span class="level-item">人物</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
+        <a class="is-flex" href="#2-创建SpringBoot项目，引入RabbitMQ依赖">
+        <span class="has-mr-6">2</span>
+        <span>2  创建SpringBoot项目，引入RabbitMQ依赖</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-配置application-properties文件">
+        <span class="has-mr-6">3</span>
+        <span>3 配置application.properties文件</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-RabbitMQ的五种模式">
+        <span class="has-mr-6">4</span>
+        <span>4 RabbitMQ的五种模式</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-简单队列（模式）">
+        <span class="has-mr-6">4.1</span>
+        <span>1) 简单队列（模式）</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-Work-模式">
+        <span class="has-mr-6">4.2</span>
+        <span>2) Work 模式</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-订阅模型-Fanout">
+        <span class="has-mr-6">4.3</span>
+        <span>3) 订阅模型-Fanout</span>
+        </a></li></ul></li></ul>
+            </div>
         </div>
     </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MQ/" style="font-size: 10px;">MQ</a> <a href="/tags/RabbitMQ/" style="font-size: 10px;">RabbitMQ</a> <a href="/tags/lhy/" style="font-size: 10px;">lhy</a>
-    </div>
-</div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
         
-            <div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2020/01/13/SpringBoot-RabbitMQ%E7%A4%BA%E4%BE%8B%E6%95%B4%E5%90%88/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="SpringBoot+RabbitMQ示例整合">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-13T00:57:39.000Z">2020-01-13</time></div>
-                    <a href="/2020/01/13/SpringBoot-RabbitMQ%E7%A4%BA%E4%BE%8B%E6%95%B4%E5%90%88/" class="title has-link-black-ter is-size-6 has-text-weight-normal">SpringBoot+RabbitMQ示例整合</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Java%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">Java技术分享</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/10/lhy/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://img03.sogoucdn.com/app/a/07/e58d89131f3a0882b804313208e0e983" alt="lhy">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T03:10:56.000Z">2020-01-10</time></div>
-                    <a href="/2020/01/10/lhy/" class="title has-link-black-ter is-size-6 has-text-weight-normal">lhy</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E4%BA%BA%E7%89%A9/">人物</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/09/test/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1578559857827&amp;di=42fdfb6560bdf03b8e789354b8f4df6e&amp;imgtype=0&amp;src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F7%2F57cf8a32d8b77.jpg" alt="测试-标题图片发布">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T05:56:32.289Z">2020-01-09</time></div>
-                    <a href="/2020/01/09/test/" class="title has-link-black-ter is-size-6 has-text-weight-normal">测试-标题图片发布</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Java/">
-                        <span class="tag">Java</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/MQ/">
-                        <span class="tag">MQ</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/RabbitMQ/">
-                        <span class="tag">RabbitMQ</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/lhy/">
-                        <span class="tag">lhy</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-        
         </div>
     
 </div>
 
                 
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        <div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2020/01/13/SpringBoot-RabbitMQ%E7%A4%BA%E4%BE%8B%E6%95%B4%E5%90%88/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="SpringBoot+RabbitMQ示例整合">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-13T00:57:39.000Z">2020-01-13</time></div>
-                    <a href="/2020/01/13/SpringBoot-RabbitMQ%E7%A4%BA%E4%BE%8B%E6%95%B4%E5%90%88/" class="title has-link-black-ter is-size-6 has-text-weight-normal">SpringBoot+RabbitMQ示例整合</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Java%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">Java技术分享</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/10/lhy/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://img03.sogoucdn.com/app/a/07/e58d89131f3a0882b804313208e0e983" alt="lhy">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-10T03:10:56.000Z">2020-01-10</time></div>
-                    <a href="/2020/01/10/lhy/" class="title has-link-black-ter is-size-6 has-text-weight-normal">lhy</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E4%BA%BA%E7%89%A9/">人物</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/09/test/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1578559857827&amp;di=42fdfb6560bdf03b8e789354b8f4df6e&amp;imgtype=0&amp;src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F7%2F57cf8a32d8b77.jpg" alt="测试-标题图片发布">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-09T05:56:32.289Z">2020-01-09</time></div>
-                    <a href="/2020/01/09/test/" class="title has-link-black-ter is-size-6 has-text-weight-normal">测试-标题图片发布</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Java/">
-                        <span class="tag">Java</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/MQ/">
-                        <span class="tag">MQ</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/RabbitMQ/">
-                        <span class="tag">RabbitMQ</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/lhy/">
-                        <span class="tag">lhy</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
             </div>
         </div>
     </section>
@@ -951,6 +661,6 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
-<!--    <script type="text/javascript" color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>-->
+    <script type="text/javascript" color="20,20,20" opacity='0.9' zIndex="-2" count="300" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
