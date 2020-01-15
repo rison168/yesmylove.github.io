@@ -2,7 +2,7 @@ const ap = new APlayer({
     container: document.getElementById('aplayer'),
     fixed: true,
     autoplay: false,
-    lrcType: 3,
+    lrcType: 0,
     audio: [
         {
             name: '表态 (Live)',
