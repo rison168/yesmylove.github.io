@@ -14,7 +14,7 @@
 }
 
 #aplayer{
-    bottom: 500px;
+    bottom: 350px;
 }
 
 .aplayer * {
@@ -90,7 +90,7 @@
 
 .aplayer.aplayer-fixed .aplayer-body {
     position: fixed;
-    bottom: 500px;
+    bottom: 350px;
     left: 0;
     right: 0;
     margin: 0;
