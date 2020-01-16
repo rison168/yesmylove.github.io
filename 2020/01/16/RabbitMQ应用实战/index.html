@@ -21,19 +21,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>RabbitMQ应用场景 - 拥抱阳光的森林</title>
+<title>RabbitMQ应用实战 - 拥抱阳光的森林</title>
 
 
-    <meta name="description" content="前言上一篇说到RabbitMQ的基本用法和几种模式的区别，这篇主要说一下它的应用场景。RabbitMQ 作为目前应用相当广泛的消息中间件，在企业级应用、微服务应用中充当着重要的角色。特别是在一些典型的应用场景以及业务模块中具有重要的作用，比如业务服务模块解耦、异步通信、高并发限流、超时业务、数据延迟处理等。">
+    <meta name="description" content="前言上一篇说到RabbitMQ的基本用法和几种模式的区别，这篇主要说一下它的应用场景+实战。RabbitMQ 作为目前应用相当广泛的消息中间件，在企业级应用、微服务应用中充当着重要的角色。特别是在一些典型的应用场景以及业务模块中具有重要的作用，比如业务服务模块解耦、异步通信、高并发限流、超时业务、数据延迟处理等。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RabbitMQ应用场景">
+<meta property="og:title" content="RabbitMQ应用实战">
 <meta property="og:url" content="https://yesmylove.github.io/2020/01/16/RabbitMQ%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98/index.html">
 <meta property="og:site_name" content="拥抱阳光的森林">
-<meta property="og:description" content="前言上一篇说到RabbitMQ的基本用法和几种模式的区别，这篇主要说一下它的应用场景。RabbitMQ 作为目前应用相当广泛的消息中间件，在企业级应用、微服务应用中充当着重要的角色。特别是在一些典型的应用场景以及业务模块中具有重要的作用，比如业务服务模块解耦、异步通信、高并发限流、超时业务、数据延迟处理等。">
+<meta property="og:description" content="前言上一篇说到RabbitMQ的基本用法和几种模式的区别，这篇主要说一下它的应用场景+实战。RabbitMQ 作为目前应用相当广泛的消息中间件，在企业级应用、微服务应用中充当着重要的角色。特别是在一些典型的应用场景以及业务模块中具有重要的作用，比如业务服务模块解耦、异步通信、高并发限流、超时业务、数据延迟处理等。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bkimg.cdn.bcebos.com/pic/0df3d7ca7bcb0a4692cb5f136963f6246b60af2b?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2U4MA==,xp_5,yp_5">
 <meta property="article:published_time" content="2020-01-16T00:43:56.000Z">
-<meta property="article:modified_time" content="2020-01-16T04:04:42.262Z">
+<meta property="article:modified_time" content="2020-01-16T04:37:43.764Z">
 <meta property="article:author" content="拥抱阳光的森林">
 <meta property="article:tag" content="RabbitMQ">
 <meta name="twitter:card" content="summary">
@@ -97,7 +97,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/asf4s-vn8pu.svg" alt="RabbitMQ应用场景" height="28">
+                <img src="/images/asf4s-vn8pu.svg" alt="RabbitMQ应用实战" height="28">
             
             </a>
         </div>
@@ -155,7 +155,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="https://bkimg.cdn.bcebos.com/pic/0df3d7ca7bcb0a4692cb5f136963f6246b60af2b?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2U4MA==,xp_5,yp_5" alt="RabbitMQ应用场景">
+            <img class="thumbnail" src="https://bkimg.cdn.bcebos.com/pic/0df3d7ca7bcb0a4692cb5f136963f6246b60af2b?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2U4MA==,xp_5,yp_5" alt="RabbitMQ应用实战">
         </span>
     </div>
     
@@ -173,7 +173,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 603 个字)
+                    4 分钟 读完 (大约 605 个字)
                 </span>
                 
                 
@@ -187,11 +187,11 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                RabbitMQ应用场景
+                RabbitMQ应用实战
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇说到RabbitMQ的基本用法和几种模式的区别，这篇主要说一下它的应用场景。<br>RabbitMQ 作为目前应用相当广泛的消息中间件，在企业级应用、微服务应用中充当着重要的角色。特别是在一些典型的应用场景以及业务模块中具有重要的作用，比如业务服务模块解耦、异步通信、高并发限流、超时业务、数据延迟处理等。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><pre><code>上一篇说到RabbitMQ的基本用法和几种模式的区别，这篇主要说一下它的应用场景+实战。</code></pre><p>RabbitMQ 作为目前应用相当广泛的消息中间件，在企业级应用、微服务应用中充当着重要的角色。特别是在一些典型的应用场景以及业务模块中具有重要的作用，比如业务服务模块解耦、异步通信、高并发限流、超时业务、数据延迟处理等。</p>
 <a id="more"></a>
 <h2 id="RabbitMQ-官方拜读"><a href="#RabbitMQ-官方拜读" class="headerlink" title="RabbitMQ 官方拜读"></a>RabbitMQ 官方拜读</h2><p>首先，让我们先拜读 RabbitMQ 官网的技术开发手册以及相关的 Features，感兴趣的朋友可以耐心的阅读其中的相关介绍，相信会有一定的收获，地址可见：</p>
 <ul>
@@ -218,7 +218,7 @@
         </div>
             
                             <ul class="post-copyright">
-                                <li><strong>本文标题：</strong><a href="https://yesmylove.github.io/2020/01/16/RabbitMQ%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98/">RabbitMQ应用场景</a></li>
+                                <li><strong>本文标题：</strong><a href="https://yesmylove.github.io/2020/01/16/RabbitMQ%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98/">RabbitMQ应用实战</a></li>
                                 <li><strong>本文作者：</strong><a href="https://yesmylove.github.io">拥抱阳光的森林</a></li>
                                 <li><strong>本文链接：</strong><a href="https://yesmylove.github.io/2020/01/16/RabbitMQ%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98/">https://yesmylove.github.io/2020/01/16/RabbitMQ%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98/</a></li>
                                 <li><strong>发布时间：</strong>2020-01-16</li>
@@ -412,7 +412,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/asf4s-vn8pu.svg" alt="RabbitMQ应用场景" height="28">
+                    <img src="/images/asf4s-vn8pu.svg" alt="RabbitMQ应用实战" height="28">
                 
                 </a>
                 <p class="is-size-7">
