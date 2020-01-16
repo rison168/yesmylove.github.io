@@ -21,13 +21,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签: MQ - 拥抱阳光的森林</title>
+<title>分类: RabbitMQ - 拥抱阳光的森林</title>
 
 
     <meta name="description" content="my blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="拥抱阳光的森林">
-<meta property="og:url" content="https://yesmylove.github.io/tags/MQ/index.html">
+<meta property="og:url" content="https://yesmylove.github.io/categories/RabbitMQ/index.html">
 <meta property="og:site_name" content="拥抱阳光的森林">
 <meta property="og:description" content="my blog">
 <meta property="og:locale" content="zh_CN">
@@ -147,8 +147,9 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">MQ</a></li>
+            <li><a href="/categories">分类</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">RabbitMQ</a></li>
         </ul>
         </nav>
     </div>
@@ -158,8 +159,8 @@
 <div class="card">
     
     <div class="card-image">
-        <a href="/2020/01/13/SpringBoot-RabbitMQ%E7%A4%BA%E4%BE%8B%E6%95%B4%E5%90%88/" class="image is-7by1">
-            <img class="thumbnail" src="https://blog.zenika.com/wp-content/uploads/2012/03/RabbitMQ.jpg" alt="SpringBoot+RabbitMQ 示例">
+        <a href="/2020/01/16/RabbitMQ%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98/" class="image is-7by1">
+            <img class="thumbnail" src="https://bkimg.cdn.bcebos.com/pic/0df3d7ca7bcb0a4692cb5f136963f6246b60af2b?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2U4MA==,xp_5,yp_5" alt="RabbitMQ应用场景">
         </a>
     </div>
     
@@ -167,17 +168,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-13T00:57:39.000Z">2020-01-13</time>
+                <time class="level-item has-text-grey" datetime="2020-01-16T00:43:56.000Z">2020-01-16</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Java%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">Java技术分享</a>
+                <a class="has-link-grey -link" href="/categories/RabbitMQ/">RabbitMQ</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    12 分钟 读完 (大约 1871 个字)
+                    4 分钟 读完 (大约 603 个字)
                 </span>
                 
                 
@@ -186,24 +187,11 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/01/13/SpringBoot-RabbitMQ%E7%A4%BA%E4%BE%8B%E6%95%B4%E5%90%88/">SpringBoot+RabbitMQ 示例</a>
+                <a class="has-link-black-ter" href="/2020/01/16/RabbitMQ%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98/">RabbitMQ应用场景</a>
             
         </h1>
         <div class="content">
-            <h2 id="RabbitMQ简介"><a href="#RabbitMQ简介" class="headerlink" title="RabbitMQ简介"></a>RabbitMQ简介</h2><p>   RabbitMQ是实现AMQP(高级消息队列协议)的消息中间件的一种，用于分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。</p>
-<p> 一些主要概念：</p>
-<ul>
-<li>生产者 消息的生产方，负责将消息推送到消息队列</li>
-<li>消费者 消息的最终接收方，负责监听队列中相应的消息，消费信息</li>
-<li>队列 消息的寄存器，负责存放生产者产生的信息</li>
-</ul>
-<p>模式：</p>
-<ul>
-<li>direct 直连模式，用于实例间的任务分发</li>
-<li>topic 话题模式，通过可配置的规则分发给绑定的exchange上的队列</li>
-<li>headers 适用于规则复杂的分发，用于headers里面的参数表达规则</li>
-<li>fanout 分发给所有绑定到该exchange上的队列，忽略routing key</li>
-</ul>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇说到RabbitMQ的基本用法和几种模式的区别，这篇主要说一下它的应用场景。<br>RabbitMQ 作为目前应用相当广泛的消息中间件，在企业级应用、微服务应用中充当着重要的角色。特别是在一些典型的应用场景以及业务模块中具有重要的作用，比如业务服务模块解耦、异步通信、高并发限流、超时业务、数据延迟处理等。</p>
         </div>
             
         
@@ -211,7 +199,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/01/13/SpringBoot-RabbitMQ%E7%A4%BA%E4%BE%8B%E6%95%B4%E5%90%88/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/01/16/RabbitMQ%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98/#more">阅读更多</a>
                 </div>
             </div>
         </div>
