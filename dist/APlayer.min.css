@@ -43,8 +43,8 @@
 }
 
 .aplayer.aplayer-withlrc .aplayer-pic {
-    height: 25px;
-    width: 25px
+    height: 90px;
+    width: 15px
 }
 
 .aplayer.aplayer-withlrc .aplayer-info {
@@ -66,8 +66,8 @@
 }
 
 .aplayer.aplayer-narrow .aplayer-body, .aplayer.aplayer-narrow .aplayer-pic {
-    height: 25px;
-    width: 25px
+    height: 66px;
+    width: 15px
 }
 
 .aplayer.aplayer-fixed {
@@ -142,7 +142,7 @@
 }
 
 .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-    width: 25px !important
+    width: 15px !important
 }
 
 .aplayer.aplayer-fixed.aplayer-narrow .aplayer-miniswitcher .aplayer-icon {
@@ -233,8 +233,8 @@
 .aplayer .aplayer-pic {
     position: relative;
     float: left;
-    height: 25px;
-    width: 25px;
+    height: 66px;
+    width: 15px;
     background-size: cover;
     background-position: 50%;
     transition: all .3s ease;
@@ -297,7 +297,7 @@
 }
 
 .aplayer .aplayer-info {
-    margin-left: 66px;
+    margin-left: 15px;
     padding: 14px 7px 0 10px;
     height: 66px;
     box-sizing: border-box
